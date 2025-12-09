@@ -1,0 +1,14 @@
+Shapeshifter Scalar Concentrate 1.0
+
+  ---
+
+Summary
+
+  Works similarly to "Scalar Diffuse", but in reverse.
+
+  ---
+
+Parameters
+
+Attribute - The scalar attribute to concentrate.
+Input - Determines how the input range

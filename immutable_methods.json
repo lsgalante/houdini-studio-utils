@@ -1,0 +1,19 @@
+{
+	"env" :
+    [
+        {
+            "HOUDINI_PATH" :
+                [
+                    { "houdini_os == 'linux'" : "~/Dropbox/repos/immutable_methods" },
+                    { "houdini_os == 'macos'" : "~/Dropbox/repos/immutable_methods" }
+                ]
+        },
+        {
+            "PYTHONPATH": 
+                [
+                    { "houdini_os == 'linux'" : "~/Dropbox/repos/immutable_methods/scripts" },
+                    { "housini_os == 'macos'" : "~/Dropbox/repos/immutable_methods/scripts" }
+                ]
+        }
+    ]
+}

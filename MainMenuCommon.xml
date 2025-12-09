@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Please note, that the files defining the main menu (ie, MainMenuCommon,
+     MainMenuMaster, and MainMenuEscape)
+     can exist in $HOME/houdiniX.Y/ directory and will supplement
+     the original definitions found in $HFS/houdini/ -->
+<mainMenu>
+  <menuBar>
+    <subMenu id="hc_submenu">
+    <label>hc</label>
+
+      <titleItem>
+        <label>Global</label>
+      </titleItem>
+
+      <scriptItem id="h.hcglobal_open_color_editor">
+        <label>Color Editor</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().openColorEditor()]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.hcglobal_keycam">
+        <label>Keycam</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().keycam()]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.hcglobal_reload_color_schemes">
+        <label>Reload Color Schemes</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().reload_color_schemes()]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.hcglobal_reload_hotkeys">
+        <label>Reload Hotkeys</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().reloadHotkeys()]]>
+        </scriptCode>
+    </scriptItem>
+
+      <scriptItem id="h.hcglobal_reload_keycam">
+        <label>Reload Keycam</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().reloadKeycam()]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.hcglobal_restart_houdini">
+        <label>Restart Houdini</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().restartHoudini()]]>
+        </scriptCode>
+    </scriptItem>
+
+      <scriptItem id="h.hcglobal_toggle_menus">
+        <label>Toggle Menus</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().toggleMenus()]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.hcglobal_toggle_network_controls">
+        <label>Toggle Network Controls</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().toggleNetworkControls()]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.hcglobal_toggle_tabs">
+        <label>Toggle Tabs</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().toggleTabs()]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.hcglobal_toggle_stowbars">
+        <label>Toggle Stowbars</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().toggleStowbars()]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.hcglobal_update_main_menu_bar">
+        <label>Update Main Menu Bar</label>
+        <scriptCode>
+<![CDATA[from hclib import HCGlobal
+HCGlobal().updateMainMenuBar()]]>
+        </scriptCode>
+      </scriptItem>
+
+      <separatorItem />
+
+      <titleItem>
+        <label>Scene Viewer</label>
+      </titleItem>
+
+      <separatorItem />
+
+      <titleItem>
+        <label>Network Editor</label>
+      </titleItem>
+
+      <separatorItem />
+      <separatorItem />
+
+    </subMenu>
+  </menuBar>
+</mainMenu>

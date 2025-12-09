@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menuDocument>
+  <menu>
+    <removeItem id="take_activate"/>
+    <removeItem id="lock_parm"/>
+    <removeItem id="unlock_parm"/>
+    <removeItem id="revert_factory_defs"/>
+    <removeItem id="set_curr_as_def"/>
+    <removeItem id="export_parm_type_props"/>
+
+
+    <scriptItem id="vector_set_x">
+      <label>Set to X</label>
+      <context>
+        <expression><![CDATA[
+from hclib import hcmenuutils as hcmu
+return hcmu.vector3Test(kwargs)
+]]></expression>
+      </context>
+      <scriptCode><![CDATA[
+from hclib import hcmenuutils as hcmu
+hcmu.setVector3(kwargs, 1, 0, 0)
+]]></scriptCode>
+    </scriptItem>
+
+
+    <scriptItem id="vector_lock">
+      <label>Lock Y and Z to X</label>
+      <context>
+        <expression><![CDATA[
+from hclib import hcmenuutils as hcmu
+return hmu.vector3Test(kwargs)
+]]></expression>
+      </context>
+      <scriptCode><![CDATA[
+from hclib import hcmenuutils as hcmu
+hcmu.vector3XMaster(kwargs)
+]]></scriptCode>
+    </scriptItem>
+  </menu>
+</menuDocument>

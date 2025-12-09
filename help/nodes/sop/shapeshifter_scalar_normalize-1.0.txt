@@ -1,0 +1,16 @@
+Shapeshifter Scalar Normalize 1.0
+
+  ---
+
+Summary
+
+This node receives a scalar attribute, "Normalizes" it and outputs the result.
+In this context, normalizing is the process of uniformly adjusting the summation of an attribute.
+
+
+  ---
+
+Parameters
+
+Attribute - The scalar attribute to normalize.
+Input - Determines how the input range

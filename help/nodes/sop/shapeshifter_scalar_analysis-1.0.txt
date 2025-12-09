@@ -1,0 +1,44 @@
+Shapeshifter Scalar Analysis 1.0
+
+Summary
+
+  This node analyzes certain properties of scalar attributes.
+
+Inputs
+
+  1
+    - Contemporary data
+
+  2
+    - Frame input data
+
+Parameters
+
+  Attribute - The scalar attribute to analyze properties of.
+
+  Global Folder
+
+    Min
+      - Reports the lowest value of the specified attribute.
+
+    Max
+      - Returns the highest value of the specified attribute.
+
+    Sum
+      - Returns the attribute's summation.
+
+    Average
+      - Returns the average value of the attribute.
+
+    Ratio
+      - Reports the summation of the attribute divided by the number of data points.
+
+    Spread
+      - Reports the difference between the highest and lowest values.
+
+	Point Folder
+
+	  Direction
+        - An integer attribute indicating whether the value per
+	  point has increased, decreased or not changed since the previous
+	  frame.

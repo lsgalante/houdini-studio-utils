@@ -1,0 +1,23 @@
+Shapeshifter Scalar Map 1.0
+
+  ---
+
+  Summary
+
+This node maps the domain of an attribute to another.
+
+  ---
+
+  Parameters
+
+Attribute         - The scalar attribute to alter the domain of.
+
+Domain In Method  - How the input domain is determined.
+Domain In         - The input domain, when the domain in method is "fixed".
+
+Domain Out Method - How the output domain is determined.
+Domain Out        - The output domain, when the domain out method is "fixed".
+
+  ---
+
+

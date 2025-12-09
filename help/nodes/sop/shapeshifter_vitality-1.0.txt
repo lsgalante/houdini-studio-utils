@@ -1,0 +1,52 @@
+Shapeshifter Vitality 1.0
+
+  ---
+
+  Summary
+
+This node tracks the age of attributes using various metrics.
+
+  ---
+
+  Inputs
+
+Input 1
+	- Normal Data
+
+Input 2
+	- Data from the beginning of the frame
+
+  ---
+
+  Parameters
+
+Attribute
+  - The attribute to track the age of.
+
+Increment Trigger
+  - Every Frame
+  - Outside of Domain
+  - Inside of Domain
+  - Never
+
+Increment Method
+  - Constant
+  - Attribute Value
+
+Multiply Increment by Sign
+  - Yes/No
+
+Reset on Sign Change
+  - Yes/No
+
+Upper Domain Type
+  - Constant
+  - Point Attribute
+  - Detail Attribute
+  - None
+
+Lower Domain Type
+  - Constant
+  - Point Attribute
+  - Detail Attribute
+  - None
