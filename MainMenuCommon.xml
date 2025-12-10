@@ -5,6 +5,10 @@
      the original definitions found in $HFS/houdini/ -->
 <mainMenu>
   <menuBar>
+
+    <removeItem id="render_menu" />
+    <removeItem id="takes_menu_mm" />
+
     <subMenu id="hc_submenu">
     <label>hc</label>
 
