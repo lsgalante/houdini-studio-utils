@@ -35,11 +35,13 @@ def createEventHandler(uievent, pending_actions):
             'Ctrl+L': lambda: hceditor.translateNodes('right'),
             ## Organize
             'Ctrl+Shift+A': hceditor.arrangeNodes,
-            'Shift+D': hceditor.placeDot,
+            'Shift+D': hceditor.addDot,
             ## Grid
             'Shift+G': hceditor.toggleGridMode,
             ## Update mode
-            'M': hceditor.toggleUpdateMode
+            'M': hceditor.toggleUpdateMode,
+            ## Radial menu
+            'C': hceditor.showRadialMenu
         }
 
         key = uievent.key

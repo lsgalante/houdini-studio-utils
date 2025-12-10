@@ -8,53 +8,11 @@ class HCNetworkEditor(HCPathTab):
         self.editor = tab
         self.deltat = 2
 
-    def showPathMessage(self):
-        self.editor.flashMessage(image=None, message=self.path(), duration=1)
-
-    """
-    Nodes
-    """
-
-    def arrangeNodes(self):
-        # self.context().layoutChildren(horizontal_spacing=5, vertical_spacing=
-        return
-
-    def quantizeNodes(self):
-        return
-
-    def translateNodes(self, direction):
-        idxmap = {
-            'up': 1,
-            'down': 1,
-            'left': 0,
-            'right': 0
-        }
-        rectifiermap = {
-            'up': hou.Vector2(0, 0.85),
-            'down': hou.Vector2(0, -0.85),
-            'left': hou.Vector2(0.-0.85, 0),
-            'right': hou.Vector2(0.85, 0)
-        }
-        for node in self.selectedNodes():
-            idx = idxmap[direction]
-            p = node.position() + rectifiermap[direction]
-            val = p[idx]
-            if val%1 <= 0.5:
-                val = math.floor(val)
-            else:
-                val = math.ceil(val)
-            p[idx] = val
-            node.setPosition(p)
-
-    def renameNode(self):
-        node = self.currentNode()
-        name = hou.ui.readInput("Rename_node", buttons=("Yes", "No"))
-        if name[0] == 0:
-            node.setName(name[1])
-
-    """
-    Objects
-    """
+    def addDot(self):
+        if len(self.selectedNodes()) == 1:
+            dot = self.context().createNetworkDot()
+            dot.setInput(node)
+            dot.setPosition(self.cursorPos())
 
     def addNetworkBox(self):
         networkbox = self.context().createNetworkBox()
@@ -66,22 +24,48 @@ class HCNetworkEditor(HCPathTab):
         stickynote.setPosition(p)
         stickynote.setColor(hou.Color(0.71, 0.78, 1.0))
 
-    def placeDot(self):
-        if len(self.selectedNodes()) == 1:
-            dot = self.context().createNetworkDot()
-            dot.setInput(node)
-            dot.setPosition(self.cursorPos())
+    def arrangeNodes(self):
+        # self.context().layoutChildren(horizontal_spacing=5, vertical_spacing=
+        return
 
-    """
-    Selection
-    """
+    def bounds(self):
+        return self.editor.visibleBounds()
+
+    def cursorPos(self):
+        return self.editor.cursorPosition()
 
     def deselectAll(self):
         self.selectedNodes().setSelected(False)
 
-    """
-    Settings
-    """
+    def frameAll(self):
+        self.editor.requestZoomReset()
+
+    def quantizeNodes(self):
+        return
+
+    def renameNode(self):
+        node = self.currentNode()
+        name = hou.ui.readInput("Rename_node", buttons=("Yes", "No"))
+        if name[0] == 0:
+            node.setName(name[1])
+
+    def screenSize(self):
+        return self.editor.screenBounds().size()
+
+    def setBounds(self, bounds):
+        self.editor.setVisibleBounds(bounds)
+
+    def showPathMessage(self):
+        self.editor.flashMessage(image=None, message=self.path(), duration=1)
+
+    def showRadialMenu(self):
+        from ..utils.hcradialutils import editorRadialMain
+        menu = editorRadialMain()
+        print(menu)
+        self.editor.displayRadialMenu("hc_editor_radial_menu")
+
+    def size(self):
+        return self.bounds().size()
 
     def toggleDimUnusedNodes(self):
         map = {
@@ -116,27 +100,29 @@ class HCNetworkEditor(HCPathTab):
         mode = str(hou.updateModeSetting())
         hou.setUpdateMode(map[mode])
 
-    """
-    Viewport
-    """
-
-    def cursorPos(self):
-        return self.editor.cursorPosition()
-
-    def bounds(self):
-        return self.editor.visibleBounds()
-
-    def frameAll(self):
-        self.editor.requestZoomReset()
-
-    def screenSize(self):
-        return self.editor.screenBounds().size()
-
-    def setBounds(self, bounds):
-        self.editor.setVisibleBounds(bounds)
-
-    def size(self):
-        return self.bounds().size()
+    def translateNodes(self, direction):
+        idxmap = {
+            'up': 1,
+            'down': 1,
+            'left': 0,
+            'right': 0
+        }
+        rectifiermap = {
+            'up': hou.Vector2(0, 0.85),
+            'down': hou.Vector2(0, -0.85),
+            'left': hou.Vector2(0.-0.85, 0),
+            'right': hou.Vector2(0.85, 0)
+        }
+        for node in self.selectedNodes():
+            idx = idxmap[direction]
+            p = node.position() + rectifiermap[direction]
+            val = p[idx]
+            if val%1 <= 0.5:
+                val = math.floor(val)
+            else:
+                val = math.ceil(val)
+            p[idx] = val
+            node.setPosition(p)
 
     def translateView(self, direction):
         xformmap = {
