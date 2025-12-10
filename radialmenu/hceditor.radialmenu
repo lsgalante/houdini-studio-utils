@@ -1,0 +1,9 @@
+{
+	"fileversion":"21.0.512",
+	"name":"hc_editor_radial_menu",
+	"categories":"Standard",
+	"pane":"network",
+	"label":"HC Editor Radial Menu",
+	"type":"script_submenu",
+	"script":"from hclib import hcradialutils as hcru\n\nmenu = hcru.editorRadialMain(**kwargs)\nradialmenu.setRadialMenu(menu)"
+}

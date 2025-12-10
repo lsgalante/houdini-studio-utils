@@ -1,0 +1,9 @@
+{
+	"fileversion":"21.0.512",
+	"name":"hc_viewer_radial_menu",
+	"categories":"Standard",
+	"pane":"scene",
+	"label":"HC Viewer Radial Menu",
+	"type":"script_submenu",
+	"script":"from hclib import hcradialutils as hcru\n\nmenu = hcru.viewerRadialMain(**kwargs)\nradialmenu.setRadialMenu(menu)"
+}
