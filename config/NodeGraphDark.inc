@@ -54,6 +54,7 @@ GraphPdgMQClientsAuthBadgeDot: #448519
 
 GraphCop2PreviewBackground: GREY(0.1)
 GraphCop2BottomButtonEnabled: GREY(0.1)
+GraphCop2MaskInput: 0.50 0.80 0.50
 
 //
 // Context: DOP
@@ -263,9 +264,9 @@ GraphSubnetShadowBlend2: 0.3
 // Overlays
 //
 
-GraphOverlayLeftText: 0.2 0.9 0.9
-GraphOverlayCenterText: 0.7 0.7 0.7
-GraphOverlayRightText: WHITE
+GraphOverlayLeftText: 0.0 0.9 0.9
+GraphOverlayCenterText: BG_LO
+GraphOverlayRightText: GREY(0.8)
 
 //
 // Palettes
@@ -302,7 +303,6 @@ GraphTagsText: #6DB4BD
 GraphConnector: 0.7 0.7 0.7
 GraphConnectorLabel: GREY(0.70)
 GraphConnectorError: #CE5E5E
-GraphCop2MaskInput: 0.50 0.80 0.50
 GraphWire: #5F91CC
 GraphWireUnused: 0.4 0.4 0.4
 GraphWireError: RED

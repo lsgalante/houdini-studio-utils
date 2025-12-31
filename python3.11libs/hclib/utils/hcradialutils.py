@@ -24,13 +24,13 @@ def viewerRadialMain(**kwargs):
     )
     createItem(
         pos=7,
-        label="Display bar",
-        script='from hclib import HCSceneViewer; HCSceneViewer(kwargs["pane"]).toggleDisplayOptionsToolbar()'
+        label="Operation bar",
+        script='from hclib import HCSceneViewer; HCSceneViewer(kwargs["pane"]).toggleOperationBar()'
     )
     createItem(
         pos=6,
-        label="Operation bar",
-        script='from hclib import HCSceneViewer; HCSceneViewer(kwargs["pane"]).toggleOperationBar()'
+        label="Display bar",
+        script='from hclib import HCSceneViewer; HCSceneViewer(kwargs["pane"]).toggleDisplayOptionsToolbar()'
     )
     createItem(
         pos=5,
@@ -92,33 +92,33 @@ def viewerRadialUI(**kwargs):
     menu = hou.ui.createRadialMenu('hcviewerradial', "HC Viewer Radial")
     createItem(
         pos=0,
-        label="Pane tabs",
+        label="Tabs",
         script='from hclib import HCTab; HCTab(kwargs["pane"]).hcPane().toggleTabs()'
     )
     createItem(
         pos=7,
-        label="Pane path",
+        label="Path",
         script='from hclib import HCTab; HCTab(kwargs["pane"]).toggleNetworkControls()'
     )
     createItem(
         pos=6,
-        label="Pane maximize",
+        label="Maximize",
         script='from hclib import HCTab; HCTab(kwargs["pane"]).hcPane().toggleMaximize()'
     )
     createItem(
         pos=5,
+        label="Stowbars",
+        script='from hclib import HCGlobal; HCGlobal().toggleStowbars()'
+    )
+    createItem(
+        pos=4,
         label="Global tabs",
         script='from hclib import HCGlobal; HCGlobal().toggleTabs()'
     )
     createItem(
-        pos=4,
+        pos=3,
         label="Global paths",
         script='from hclib import HCGlobal; HCGlobal().toggleNetworkControls()'
-    )
-    createItem(
-        pos=3,
-        label="Stowbars",
-        script='from hclib import HCGlobal; HCGlobal().toggleStowbars()'
     )
     createItem(
         pos=2,
@@ -132,19 +132,19 @@ def editorRadialMain(**kwargs):
     menu = hou.ui.createRadialMenu('hceditorradial', "HC Editor Radial")
     createItem(
         pos=0,
+        submenu=True,
+        label="UI",
+        script='from hclib import hcradialutils; hcradialutils.editorRadialUI()'
+    )
+    createItem(
+        pos=7,
         label="Menu",
         script='from hclib import HCNetworkEditor; HCNetworkEditor(kwargs["pane"]).toggleMenu()'
     )
     createItem(
-        pos=7,
+        pos=6,
         label="Frame all",
         script='from hclib import HCNetworkEditor; HCNetworkEditor(kwargs["pane"]).frameAll()'
-    )
-    createItem(
-        pos=1,
-        submenu=True,
-        label="UI",
-        script='from hclib import hcradialutils; hcradialutils.editorRadialUI()'
     )
     return menu
 
@@ -152,32 +152,32 @@ def editorRadialUI(**kwargs):
     menu = hou.ui.createRadialMenu('hceditorradial', "HC Editor Radial")
     createItem(
         pos=0,
-        label="Pane tabs",
+        label="Tabs",
         script='from hclib import HCTab; HCTab(kwargs["pane"]).hcPane().toggleTabs()'
     )
     createItem(
-        pos=1,
-        label="Pane Maximize",
-        script='from hclib import HCTab; HCTab(kwargs["pane"]).hcPane().toggleMaximize()'
-    )
-    createItem(
-        pos=2,
-        label="Pane path",
+        pos=7,
+        label="Path",
         script='from hclib import HCTab; HCTab(kwargs["pane"]).toggleNetworkControls()'
     )
     createItem(
-        pos=3,
+        pos=6,
         label="Global tabs",
         script='from hclib import HCGlobal; HCGlobal().toggleTabs()'
     )
     createItem(
-        pos=4,
+        pos=5,
         label="Global paths",
         script='from hclib import HCGlobal; HCGlobal().toggleNetworkControls()'
     )
     createItem(
-        pos=5,
+        pos=4,
         label="Stowbars",
         script='from hclib import HCGlobal; HCGlobal().toggleStowbars()'
+    )
+    createItem(
+        pos=3,
+        label="Maximize",
+        script='from hclib import HCTab; HCTab(kwargs["pane"]).hcPane().toggleMaximize()'
     )
     return menu
