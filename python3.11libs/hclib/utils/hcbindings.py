@@ -98,6 +98,7 @@ def clear_assignments():
         'h.pane.gview.dockhudhandles',
         'h.pane.gview.edit_snap_options',
         'h.pane.gview.operator_menu_branch',
+        'h.pane.gview.state.view.home_selection',
         'h.pane.gview.repeat_current',
         'h.pane.gview.repeat_current_branch',
         'h.pane.gview.restore_prevcam',
@@ -179,6 +180,7 @@ def add_assignments():
         ('h.pane.shelf', 'cmd+]'),
         ## h.pane.gview
         ('h.pane.gview.refplane', 'shift+g'),
+        ('h.pane.gview.state.view.home_selection', 'shift+s'),
         ## h.pane.parms
         ('h.pane.parms.edit_expression', 'ctrl+e'),
         ## h.pane.editparms
@@ -187,8 +189,7 @@ def add_assignments():
         ('h.pane.wsheet.bypass_mode', 'b'),
         ('h.pane.wsheet.drop_on_wire_mode', 'pad8'),
         ('h.pane.wsheet.doautomovenodes', 'cmd+pad9'),
-        ('h.pane.wsheet.home_selected', 'shift+f'),
-        ('h.pane.wsheet.home_selected', 'g'),
+        ('h.pane.wsheet.home_selected', 'shift+s'),
         ('h.pane.wsheet.jump_mark_1', 'pad1'),
         ('h.pane.wsheet.jump_mark_2', 'pad2'),
         ('h.pane.wsheet.jump_mark_3', 'pad3'),
