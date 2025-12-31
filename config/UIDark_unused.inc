@@ -8,7 +8,6 @@
 //
 // Syntax
 //
-// Syntax highlighting in editors and input boxes
 
 ParmSyntaxPlainColor: #bcbec3
 ParmSyntaxStringColor: #79a978
@@ -28,8 +27,6 @@ ParmQuoteMatchColor: #FFB41F // Gold
 ParmMisMatchColor: #E14640 // Red
 
 PreEditUnderlineColor: SELECTION_BASE
-TextboxLineNumberFG: text
-TextboxLineNumberBG: DRKBASE
 TextboxLineNumberHighlight: DRKGRADHIGH
 
 //
@@ -75,7 +72,7 @@ UsdChildPrimModified: 0.15 0.40 0.40
 UsdChildPrimModifiedAlpha: 0.4
 
 //
-// Network editor: node flags
+// Network - Node flags
 //
 
 SelectOnColor: 0.75 0.75 0
@@ -93,13 +90,13 @@ ExposeOffColor: 0.6 0 0
 CurrentColor: 0.25 0.85 0.25
 
 //
-// Statusbar
+// Status bar
 //
 
 MessageColor: 0.0 0.0 0.0
 PromptColor: 0.3 0.4 0.9
 WarningColor: 0.85 0.25 0.0
-ErrorColor: error
+ErrorColor: ERR
 
 //
 // Network editor
@@ -120,7 +117,7 @@ NodeButtonBevel: GREY(0.55)
 NodeButtonBevelSelected: UNK
 NodeSeparator: GREY(0.2)
 NodeSeparatorEnabled: GREY(0.33)
-NodeError: error
+NodeError: ERR
 NodeWarningBG: black
 NodeWarningFG: 1.0 0.87 0
 NodeDefaultBG: DRKBASE
@@ -211,7 +208,7 @@ VopInOutStructColor: #DE796E
 VopInOutStructArrayColor: #A45858
 VopInOutMethodColor: #FF9900
 VopInOutMultiColor: #E5E5E5
-VopErrorColor: error
+VopErrorColor: ERR
 VopInOutDictColor: #D29628
 VopInOutDictArrayColor: #B5700A
 

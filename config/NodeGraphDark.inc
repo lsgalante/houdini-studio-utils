@@ -5,7 +5,7 @@
 // Background
 //
 
-GraphBackground: bg_low
+GraphBackground: BG_LO
 GraphOverviewBackground: GREY(0.10)
 GraphOverviewViewRegion: 0.5 0.3 0.5
 GraphOverviewBorder: BLACK
@@ -49,14 +49,14 @@ GraphPdgMQServerAuthBadgeDot: #448519
 GraphPdgMQClientsAuthBadgeDot: #448519
 
 //
-// Context: cop2
+// Context: COP2
 //
 
 GraphCop2PreviewBackground: GREY(0.1)
 GraphCop2BottomButtonEnabled: GREY(0.1)
 
 //
-// Context: dop
+// Context: DOP
 //
 
 GraphDopObjectData: 0.65 0.65 0.65
@@ -66,7 +66,7 @@ GraphDopSolverData: 0.7 0.5 0.9
 GraphDopAnyData: 0.9 0.9 0.9
 
 //
-// Context: lop
+// Context: LOP
 //
 
 GraphLopLayerOutline: GREY(0.6)
@@ -81,13 +81,13 @@ GraphLopLayerColor8: 0.2 0.4 0.6
 GraphLopLayerColor9: 0.2 0.1 0.9
 
 //
-// Context: shop
+// Context: SHOP
 //
 
 GraphShopConnectorBackground: GREY(0.1)
 
 //
-// Context: sop
+// Context: SOP
 //
 
 GraphSopHeightfield: #25aa8e
@@ -99,7 +99,7 @@ GraphSopAnimatedPose: 1.0 0.725 0.0
 GraphSopCharacterStream: 0.559 0.159 1.0
 
 //
-// Context: top
+// Context: TOP
 //
 
 GraphPdgProgressOutline: WHITE
@@ -162,7 +162,7 @@ GraphTopBottomButtonEnabled: GREY(0.1)
 GraphTopBottomButtonDisabled: GREY(0.6)
 
 //
-// Context: vop
+// Context: VOP
 //
 
 GraphVopConnectorGroupName: WHITE
@@ -212,7 +212,7 @@ GraphItemBorder: BLACK
 GraphMinimizeButton: GREY(0.8)
 
 //
-// Object: highlights
+// Objects: Highlights
 //
 
 GraphDisplayHighlight: #44679A
@@ -223,7 +223,7 @@ GraphTemplateHighlight: #734670
 GraphFilterHighlight: #298966
 
 //
-// Object: images
+// Objects: Images
 //
 
 BackgroundImageLocate: WHITE
@@ -232,13 +232,13 @@ BackgroundImageBrightness: YELLOW
 BackgroundImageLink: GREY(0.8)
 
 //
-// Object: pin
+// Objects: Dot
 //
 
 GraphDotPinAccent: GREY(0.3)
 
 //
-// Object: selection
+// Objects: Selection
 //
 
 GraphPickFill: 0.9 0.9 0.9
@@ -251,7 +251,7 @@ GraphItemContentsSelection: #6E780C
 GraphSnapLine: #5C704D
 
 //
-// Object: subnet
+// Objects: Subnet
 //
 
 GraphSubnetShadow1: BLACK

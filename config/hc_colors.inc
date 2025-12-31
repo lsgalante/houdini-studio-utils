@@ -25,28 +25,30 @@
 // New variables
 //
 
-#define selection  GREY(0.5)
-#define border selection
+#define BG_HI      #303132
+#define BG_MED     #262626
+#define BG_LO      #1E1E1F
 
-#define bg_high    #303132
-#define bg_medium  #363738
-#define bg_low     #1E1E1F
+#define SEL        GREY(0.5)
+#define BORDER     SEL
+#define DISABLED   GREY(0.2)
 
-#define button     #404040
+#define BUTTON     #404040
 
-#define bevel_high GREY(0.52)
-#define bevel_low  black
+#define BEVEL_HI   GREY(0.52)
+#define BEVEL_LO   black
 
-#define separator  #363738
-#define error      1 0 0
+#define SEP        #363738
+#define ERR        1 0 0
 
-#define text       #ACDAD5
+#define TEXT       #ACDAD5
+#define TEXT_DIM   GREY(0.5)
 
 //
 // Old variables
 //
 
-#define DRKBASE              GREY(0.179)
+#define DRKBASE              GREY(0.179) // Textbox line number bg
 #define DRKGRADHIGH          GREY(0.1)
 #define DRKGRADLOW           #1F1F1F
 #define WELL                 GREY(0.15)
@@ -57,7 +59,7 @@
 #define UNK                  1 0 1
 
 #define DARK                 GREY(0.2)
-#define ARROW                GREY(0.516) // some disabled text
+#define arrow                GREY(0.5)
 
 #define SHADOW1_5            GREY(0.699)
 #define SHADOW2              GREY(0.63)
