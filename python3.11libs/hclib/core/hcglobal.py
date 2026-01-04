@@ -230,8 +230,11 @@ class HCGlobal:
             tab.showNetworkControls(not visible)
 
     def toggleStowbars(self):
-        hidden = hou.ui.hideAllMinimizedStowbars()
-        hou.ui.setHideAllMinimizedStowbars(not hidden)
+        if hou.ui.hideAllMinimizedStowbars():
+            hou.ui.setHideAllMinimizedStowbars(False)
+        else:
+            hou.ui.setHideAllMinimizedStowbars(True)
+            hou.ui.setHideAllMinimizedStowbars(True)
 
     def toggleTabs(self):
         visible = 0
