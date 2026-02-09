@@ -10,98 +10,75 @@
     <removeItem id="takes_menu_mm" />
 
     <subMenu id="hc_submenu">
-    <label>hc</label>
+      <label>hc</label>
 
       <titleItem>
         <label>Global</label>
       </titleItem>
 
-      <scriptItem id="h.hcglobal_open_color_editor">
+      <scriptItem id="h.hc_session_coloreditor">
         <label>Color Editor</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().openColorEditor()]]>
-        </scriptCode>
+        <scriptCode><![CDATA[from hc import Session; Session().colorEditor()]]></scriptCode>
       </scriptItem>
 
-      <scriptItem id="h.hcglobal_keycam">
+      <scriptItem id="h.hc_session_keycam">
         <label>Keycam</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().keycam()]]>
-        </scriptCode>
+        <scriptCode><![CDATA[from hc import Session; Session().keycam()]]></scriptCode>
       </scriptItem>
 
-      <scriptItem id="h.hcglobal_reload_color_schemes">
-        <label>Reload Color Schemes</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().reload_color_schemes()]]>
-        </scriptCode>
+      <scriptItem id="h.hc_session_reloadcolors">
+        <label>Reload Colors</label>
+        <scriptCode><![CDATA[from hc import Session; Session().reloadColorSchemes()]]></scriptCode>
       </scriptItem>
 
-      <scriptItem id="h.hcglobal_reload_hotkeys">
+      <scriptItem id="h.hc_session_reloadhotkeys">
         <label>Reload Hotkeys</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().reloadHotkeys()]]>
-        </scriptCode>
-    </scriptItem>
+        <scriptCode><![CDATA[from hc import Session; Session().reloadHotkeys()]]></scriptCode>
+      </scriptItem>
 
-      <scriptItem id="h.hcglobal_reload_keycam">
+      <!-- <scriptItem id="h.hc_session_reloadpackage"> -->
+        <!-- <label>Reload Package</label> -->
+        <!-- <scriptCode><![CDATA[from hc import Session; Session().reloadStudioUtils()]]></scriptCode> -->
+      <!-- </scriptItem> -->
+
+      <scriptItem id="h.hc_session_reloadkeycam">
         <label>Reload Keycam</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().reloadKeycam()]]>
-        </scriptCode>
+        <scriptCode><![CDATA[from hc import Session; Session().reloadKeycam()]]></scriptCode>
       </scriptItem>
 
-      <scriptItem id="h.hcglobal_restart_houdini">
-        <label>Restart Houdini</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().restartHoudini()]]>
-        </scriptCode>
-    </scriptItem>
+      <!-- <scriptItem id="h.hc_session_restarthoudini"> -->
+        <!-- <label>Restart Houdini</label> -->
+        <!-- <scriptCode><![CDATA[from hc import Session; Session().restartHoudini()]]></scriptCode> -->
+      <!-- </scriptItem> -->
 
-      <scriptItem id="h.hcglobal_toggle_menus">
+      <scriptItem id="h.hc_session_togglemenus">
         <label>Toggle Menus</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().toggleMenus()]]>
-        </scriptCode>
+        <scriptCode><![CDATA[from hc import Session; Session().toggleMenus()]]></scriptCode>
       </scriptItem>
 
-      <scriptItem id="h.hcglobal_toggle_network_controls">
+      <scriptItem id="h.hc_session_togglenetworkcontrols">
         <label>Toggle Network Controls</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().toggleNetworkControls()]]>
-        </scriptCode>
+        <scriptCode><![CDATA[from hc import Session; Session().toggleNetworkControls()]]></scriptCode>
       </scriptItem>
 
-      <scriptItem id="h.hcglobal_toggle_tabs">
+      <scriptItem id="h.hc_session_toggletabs">
         <label>Toggle Tabs</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().toggleTabs()]]>
-        </scriptCode>
+        <scriptCode><![CDATA[from hc import Session; Session().toggleTabs()]]></scriptCode>
       </scriptItem>
 
-      <scriptItem id="h.hcglobal_toggle_stowbars">
+      <scriptItem id="h.hc_session_togglestowbars">
         <label>Toggle Stowbars</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().toggleStowbars()]]>
-        </scriptCode>
+        <scriptCode><![CDATA[from hc import Session; Session().toggleStowbars()]]></scriptCode>
       </scriptItem>
 
-      <scriptItem id="h.hcglobal_update_main_menu_bar">
-        <label>Update Main Menu Bar</label>
-        <scriptCode>
-<![CDATA[from hclib import HCGlobal
-HCGlobal().updateMainMenuBar()]]>
-        </scriptCode>
+      <!-- <scriptItem id="h.hc_session_updatemainmenubar"> -->
+        <!-- <label>Update Main Menu Bar</label> -->
+        <!-- <scriptCode><![CDATA[from hc import Session; Session().updateMainMenuBar()]]></scriptCode> -->
+      <!-- </scriptItem> -->
+
+      <scriptItem id="h.hc_panel">
+        <label>HC Panel</label>
+        <scriptCode><![CDATA[from hc import Panel; Panel().show()]]></scriptCode>
       </scriptItem>
 
       <separatorItem />
@@ -117,8 +94,8 @@ HCGlobal().updateMainMenuBar()]]>
       </titleItem>
 
       <separatorItem />
-      <separatorItem />
 
     </subMenu>
+
   </menuBar>
 </mainMenu>
