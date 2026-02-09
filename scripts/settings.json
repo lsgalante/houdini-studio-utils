@@ -1,0 +1,27 @@
+{
+    "keycam": {
+        "guides": {
+            "axis_size": 1,
+            "bbox": 0,
+            "cam_axis": 0,
+            "cam_geo": 1,
+            "perim": 0,
+            "pivot_2d": 0,
+            "pivot_3d": 0,
+            "pivot_axis": 1,
+            "ray": 0,
+            "tie_axis_to_radius": 0
+        },
+        "startup": {
+            "center_on_geo": 1,
+            "lock_cam": 1,
+            "reset": 1
+        },
+        "units": {
+            "r": 7.5,
+            "t": 1,
+            "ow": 1,
+            "dist": 1
+        }
+    }
+}
