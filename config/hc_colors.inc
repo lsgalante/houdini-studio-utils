@@ -13,6 +13,7 @@
 #define CYAN     0 1 1
 #define YELLOW   1 1 0
 #define MAGENTA  1 0 1
+#define MY_BLUE  #5555aa
 
 #define PINK     1 0.8 0.8
 #define MINT     0.8 1 0.8
@@ -25,7 +26,7 @@
 // New variables
 //
 
-#define BG_HI      #303132
+#define BG_HI      #202020
 #define BG_MED     #262626
 #define BG_LO      #1E1E1F
 
