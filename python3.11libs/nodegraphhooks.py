@@ -1,15 +1,15 @@
 import hou
 from canvaseventtypes import *
 import nodegraphdisplay as display
-from hclib import HCNetworkEditor
+from hc import Session, NetworkEditor
 # import nodegraphview as view
 
 
 def createEventHandler(uievent, pending_actions):
 
     if isinstance(uievent, ContextEvent):
-        # hceditor = HCNetworkEditor(uievent.editor)
-        # hceditor.showPathMessage()
+        # editor = NetworkEditor(uievent.editor)
+        # editor.showPathMessage()
         # return None, True
         return None, False
 
@@ -18,30 +18,28 @@ def createEventHandler(uievent, pending_actions):
 
     elif isinstance(uievent, KeyboardEvent) and \
     uievent.eventtype == 'keyhit':
-        hceditor = HCNetworkEditor(uievent.editor)
+        editor = NetworkEditor(uievent.editor)
+        session = Session()
         keymap = {
-            ## Zoom
-            '=': lambda: hceditor.zoom('in'),
-            '-': lambda: hceditor.zoom('out'),
-            ## Move view
-            'K': lambda: hceditor.translateView('up'),
-            'J': lambda: hceditor.translateView('down'),
-            'H': lambda: hceditor.translateView('left'),
-            'L': lambda: hceditor.translateView('right'),
-            ## Move node
-            'Ctrl+K': lambda: hceditor.translateNodes('up'),
-            'Ctrl+J': lambda: hceditor.translateNodes('down'),
-            'Ctrl+H': lambda: hceditor.translateNodes('left'),
-            'Ctrl+L': lambda: hceditor.translateNodes('right'),
-            ## Organize
-            'Ctrl+Shift+A': hceditor.arrangeNodes,
-            'Shift+D': hceditor.addDot,
-            ## Grid
-            'Shift+G': hceditor.toggleGridMode,
-            ## Update mode
-            'M': hceditor.toggleUpdateMode,
-            ## Radial menu
-            'C': hceditor.showRadialMenu
+            # Zoom
+            '=': lambda: editor.zoom('in'),
+            '-': lambda: editor.zoom('out'),
+            # Move view
+            'K': lambda: editor.translateView('up'),
+            'J': lambda: editor.translateView('down'),
+            'H': lambda: editor.translateView('left'),
+            'L': lambda: editor.translateView('right'),
+            # Move node
+            'Ctrl+K': lambda: editor.translateNodes('up'),
+            'Ctrl+J': lambda: editor.translateNodes('down'),
+            'Ctrl+H': lambda: editor.translateNodes('left'),
+            'Ctrl+L': lambda: editor.translateNodes('right'),
+            # Organize
+            'Ctrl+Shift+A': editor.arrangeNodes,
+            # Grid
+            'Shift+G': editor.toggleGridMode,
+            # Selection
+            'Ctrl+D': editor.pwd().deselectAll
         }
 
         key = uievent.key

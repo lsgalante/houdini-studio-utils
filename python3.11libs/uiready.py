@@ -1,11 +1,11 @@
 import hou
-from hclib import HCGlobal
+from hc import Session
 from PySide6.QtCore import Qt
 
-hcglobal = HCGlobal()
+session = Session()
 
-hcglobal.reloadHotkeys()
-hcglobal.toggleStowbars()
+session.reloadHotkeys()
+session.toggleStowbars()
 
 ## Set network grid points to on
 # networkeditors = desktop.getNetworkEditors()

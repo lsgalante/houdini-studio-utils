@@ -5,5 +5,5 @@
 	"pane":"scene",
 	"label":"HC Viewer Radial Menu",
 	"type":"script_submenu",
-	"script":"from hclib import hcradialutils as hcru\n\nmenu = hcru.viewerRadialMain(**kwargs)\nradialmenu.setRadialMenu(menu)"
+	"script":"from hc import radialutils as ru\n\nmenu = ru.viewerRadialMain(**kwargs)\nradialmenu.setRadialMenu(menu)"
 }
