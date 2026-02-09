@@ -6,53 +6,62 @@ menubar      -1
 statusbar    -1
 radial menu set hc_viewer_radial_menu
 root {
-    split 0.5 H {
-        tabs 0 1 {
-            pane panetab4 -a 1 -l 10 -H /obj/geo2/copnet1/ -T COP -m sceneview
-            pane copy_of_panetab6_1 -a 1 -l 10 -H /obj/geo2/copnet1/ -T COP -m imageview
-            pane panetab2 -a 0 -l 10 -H /obj/geo2/copnet1/ -T COP -m details
+    split 0.578288 H {
+        split 0.274328 V R {
+            tabs 0 0 {
+                pane panetab0 -a 1 -l 10 -H /obj/curve_tests/ -T SOP -m sceneview
+                pane panetab1 -a 1 -l 10 -H /img/ -T IMG -m imageview
+                pane panetab2 -a 1 -l 10 -H /obj/curve_tests/ -T SOP -m details
+            }
+            tabs 0 0 {
+                pane panetab3 -a 1 -l 10 -H /obj/curve_tests/ -T SOP -m details
+            }
         }
-        split 0.658706 V {
-            tabs 0 1 {
-                pane panetab3 -a 1 -l 10 -H /obj/geo2/copnet1/ -T COP -m parmeditor
+        split 0.586191 V {
+            tabs 0 0 {
+                pane panetab4 -a 1 -l 10 -H /obj/curve_tests/ -T SOP -m parmeditor
                 pane panetab5 -a 0 -l 0 -H /obj/ -T OBJ -m python
             }
-            tabs 0 1 {
-                pane panetab1 -a 0 -l 0 -H /obj/geo2/copnet1/ -T COP -m neteditor
-                pane panetab6 -a 0 -l 10 -H /obj/geo2/copnet1/ -T COP -m details
+            tabs 0 0 {
+                pane panetab6 -a 0 -l 0 -H /obj/curve_tests/ -T SOP -m neteditor
+                pane panetab7 -a 1 -l 10 -H /obj/curve_tests/ -T SOP -m details
+                pane panetab8 -a 1 -l 10 -H /obj/curve_tests/ -T SOP -m pythonpanel
             }
         }
     }
 }
 shelfdock -o 0 -l text -G 0.50 add my_shelf_set
-viewerstow -x stow -b stow -l stow -m hide -c hide -d stow ${DESKNAME}.panetab4.world
-vieweroption -a 2 ${DESKNAME}.panetab4.world
-viewlayout -s 2 ${DESKNAME}.panetab4.world
-viewtype -t ortho_right ${DESKNAME}.panetab4.world.`vpname("${DESKNAME}.panetab4.world",4)`
-viewtype -t ortho_front ${DESKNAME}.panetab4.world.`vpname("${DESKNAME}.panetab4.world",3)`
-viewtype -t ortho_right ${DESKNAME}.panetab4.world.`vpname("${DESKNAME}.panetab4.world",1)`
-viewtype -t ortho_front ${DESKNAME}.panetab4.world.`vpname("${DESKNAME}.panetab4.world",2)`
-parmeditor -T 0.25 -w 0 panetab3
-networkeditor -p '{\n	"backgroundimagebrightness":"1.0",\n	"gridmode":"2",\n	"showcopsmenu":"1",\n	"taskgraphcollapsemode":"Off",\n	"showtasksmenu":"1",\n	"useworkitemcolorattribute":"1",\n	"typesidebarsplit":"0.25",\n	"showmenu":"1",\n	"gridxstep":"1.0",\n	"treesplit":"0.25",\n	"showparmdialogmax":"1",\n	"perfstatname":"Time",\n	"palettemode":"0",\n	"taskgraphsortdirection":"0",\n	"showchilddep":"1",\n	"backgroundimageediting":"0",\n	"showtaskgraphperf":"0",\n	"showgrouplist":"0",\n	"showperfstats":"1",\n	"showparmdialog":"0",\n	"overviewmode":"2",\n	"showdep":"0",\n	"palettecolors":"",\n	"showspareinputdep":"1",\n	"workitemcolorattribute":"",\n	"palettesize":"300 300",\n	"showtypesidebar":"0",\n	"showtree":"0",\n	"overviewbounds":"0.000000 0.000000 436.800000 292.800000",\n	"taskgraphperfstatname":"Cook Time",\n	"gridystep":"1.0",\n	"taskgraphsortcriteria":"Automatic",\n	"workitemattrtocollapseby":"",\n	"grouplistsplit":"0.75"\n}\n' panetab1
-netcolumns -c display,xray,select,origin,capture,bone -n OBJ panetab1
-netcolumns -c display,render,template,selectabletemplate,highlight,unload,bypass,lock -n SOP panetab1
-netcolumns -c delscript,comment -n CHOPNET panetab1
-netcolumns -c display,export,audio,bypass,lock -n CHOP panetab1
-netcolumns -c startrender,bypass,lock -n ROP panetab1
-netcolumns -c delscript,comment -n SHOP panetab1
-netcolumns -c display,render,template,bypass -n COP2 panetab1
-netcolumns -c delscript,comment -n IMG panetab1
-netcolumns -c delscript,comment,input -n VOP panetab1
-netcolumns -c delscript,comment -n VOPNET panetab1
-netcolumns -c delscript,comment -n DOP panetab1
-netcolumns -c delscript,comment -n TOP panetab1
-netcolumns -c delscript,comment -n TOPNET panetab1
-netcolumns -c display,bypass,delscript,comment,input -n LOP panetab1
-netcolumns -c display,export,template,selectabletemplate,bypass -n COP panetab1
-netcolumns -c delscript,comment -n MGR panetab1
-netcolumns -c delscript,comment -n DIR panetab1
-netcolumns -c delscript,comment -n DATA panetab1
+viewerstow -x stow -b stow -l stow -m hide -c hide -d stow ${DESKNAME}.panetab0.world
+vieweroption -a 0 ${DESKNAME}.panetab0.world
+viewlayout -s 2 ${DESKNAME}.panetab0.world
+viewtype -t ortho_right ${DESKNAME}.panetab0.world.`vpname("${DESKNAME}.panetab0.world",4)`
+viewtype -t ortho_front ${DESKNAME}.panetab0.world.`vpname("${DESKNAME}.panetab0.world",3)`
+viewtype -t ortho_top ${DESKNAME}.panetab0.world.`vpname("${DESKNAME}.panetab0.world",1)`
+viewtype -t perspective ${DESKNAME}.panetab0.world.`vpname("${DESKNAME}.panetab0.world",2)`
 geospreadsheet -c 0 -l horizontal -s 0.5 -m none -f 0 panetab2
 scenegraphtree -S 0.25 -m 2 -p "/collections /lights" -c  -i  -o  -x 1 -s 1 -M 0 -C primtype,childcount,kind,populated,loaded,activation,visibility,solo,selectability  panetab2
-geospreadsheet -c 0 -l horizontal -s 0.5 -m none -f 0 panetab6
-scenegraphtree -S 0.25 -m 2 -p "/collections /lights" -c  -i  -o  -x 1 -s 1 -M 0 -C primtype,childcount,kind,populated,loaded,activation,visibility,solo,selectability  panetab6
+geospreadsheet -c 0 -l horizontal -s 0.5 -m none -f 0 panetab3
+scenegraphtree -S 0.25 -m 2 -p "/collections /lights" -c  -i  -o  -x 1 -s 1 -M 0 -C primtype,childcount,kind,populated,loaded,activation,visibility,solo,selectability  panetab3
+parmeditor -T 0.25 -w 0 panetab4
+networkeditor -p '{\n	"backgroundimagebrightness":"1.0",\n	"gridmode":"1",\n	"showcopsmenu":"1",\n	"taskgraphcollapsemode":"Off",\n	"showtasksmenu":"1",\n	"useworkitemcolorattribute":"0",\n	"typesidebarsplit":"0.25",\n	"showmenu":"0",\n	"gridxstep":"2.0",\n	"treesplit":"0.25",\n	"showparmdialogmax":"1",\n	"perfstatname":"Time",\n	"palettemode":"0",\n	"taskgraphsortdirection":"0",\n	"showchilddep":"1",\n	"backgroundimageediting":"0",\n	"showtaskgraphperf":"0",\n	"showgrouplist":"0",\n	"showperfstats":"1",\n	"showparmdialog":"0",\n	"overviewmode":"2",\n	"showdep":"0",\n	"palettecolors":"",\n	"showspareinputdep":"1",\n	"workitemcolorattribute":"",\n	"palettesize":"345 345",\n	"showtypesidebar":"0",\n	"showtree":"0",\n	"overviewbounds":"0.000000 0.000000 482.100000 365.400000",\n	"taskgraphperfstatname":"Cook Time",\n	"gridystep":"1.0",\n	"taskgraphsortcriteria":"Automatic",\n	"workitemattrtocollapseby":"",\n	"grouplistsplit":"0.75"\n}\n' panetab6
+netcolumns -c display,xray,select,origin,capture,bone -n OBJ panetab6
+netcolumns -c display,render,template,selectabletemplate,highlight,unload,bypass,lock -n SOP panetab6
+netcolumns -c delscript,comment -n CHOPNET panetab6
+netcolumns -c display,export,audio,bypass,lock -n CHOP panetab6
+netcolumns -c startrender,bypass,lock -n ROP panetab6
+netcolumns -c delscript,comment -n SHOP panetab6
+netcolumns -c display,render,template,bypass -n COP2 panetab6
+netcolumns -c delscript,comment -n IMG panetab6
+netcolumns -c delscript,comment,input -n VOP panetab6
+netcolumns -c delscript,comment -n VOPNET panetab6
+netcolumns -c delscript,comment -n DOP panetab6
+netcolumns -c delscript,comment -n TOP panetab6
+netcolumns -c delscript,comment -n TOPNET panetab6
+netcolumns -c display,bypass,delscript,comment,input -n LOP panetab6
+netcolumns -c display,export,template,selectabletemplate,bypass -n COP panetab6
+netcolumns -c delscript,comment -n MGR panetab6
+netcolumns -c delscript,comment -n DIR panetab6
+netcolumns -c delscript,comment -n DATA panetab6
+geospreadsheet -c 0 -l horizontal -s 0.5 -m none -f 0 panetab7
+scenegraphtree -S 0.25 -m 2 -p "/collections /lights" -c  -i  -o  -x 1 -s 1 -M 0 -C primtype,childcount,kind,populated,loaded,activation,visibility,solo,selectability  panetab7
+pythonpanel -s on -t off -n ViewerStateBrowser panetab8
