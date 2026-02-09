@@ -1,0 +1,29 @@
+{
+    "nodetype" : "cop",
+
+    "flagmapping" : {
+	"1" : {
+            "flag" : "f",
+            "color" : "GraphSelectableTemplateFlag",
+            "icon" : "NETVIEW_selectable_template_flag"
+        },
+	"2" : {
+            "flag" : "t",
+            "color" : "GraphTemplateFlag",
+            "icon" : "NETVIEW_template_flag"
+        },
+        "0" : {
+	    "flag" : "b",
+	    "color" : "GraphBypassFlag",
+	    "icon" : "NETVIEW_bypass_flag"
+	},
+	"3" : {
+	    "flag" : "d",
+	    "color" : "GraphDisplayFlag",
+	    "icon" : "NETVIEW_display_flag",
+	    "secondaryflag" : "o",
+	    "secondarycolor" : "GraphOutputFlag",
+	    "bothcolor" : "GraphDisplayAndRenderFlag"
+	}
+    }
+}
