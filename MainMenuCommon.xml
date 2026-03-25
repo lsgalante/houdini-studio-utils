@@ -23,7 +23,7 @@
 
       <scriptItem id="h.hc_session_keycam">
         <label>Keycam</label>
-        <scriptCode><![CDATA[from hc import Session; Session().keycam()]]></scriptCode>
+        <scriptCode><![CDATA[from hc import Session; Session().currentTab().keycam()]]></scriptCode>
       </scriptItem>
 
       <scriptItem id="h.hc_session_reloadcolors">
