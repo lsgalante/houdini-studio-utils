@@ -150,7 +150,7 @@ def createViewerStateTemplate():
     )
 
 
-    """ Context menu """
+    """ Context Menu """
 
     menu = hou.ViewerStateMenu('keycam_menu', 'Keycam Menu')
     menu.addActionItem('frame', 'Frame')
@@ -187,7 +187,7 @@ class State(object):
         self.options = {
             'center_on_geo': 1,
             'lock_cam':      1,
-            'reset':         1
+            'reset':         0
         }
 
         """ Check for cam node """
@@ -218,12 +218,9 @@ class State(object):
         self.scene_viewer = SceneViewer(self.hou_scene_viewer)
         self.cam = Cam(self.cam_node, self.hou_scene_viewer)
         self.guides = Guides(self)
-
         """ Prevent exiting state when current node changes """
         self.kwargs['state_flags']['exit_on_node_select'] = False
-
         self.guides.update()
-
         self.hud = Hud(self)
         self.hud.update()
 
