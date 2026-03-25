@@ -23,5 +23,7 @@
             "ow": 1,
             "dist": 1
         }
-    }
+    },
+    "node_graph": {
+        "node_shape": "rect"
 }
