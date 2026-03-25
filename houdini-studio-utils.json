@@ -1,3 +1,8 @@
 {
-    "hpath": "~/src/houdini-studio-utils"
+    "hpath": [
+        "~/src/houdini-studio-utils"
+    ],
+    "env": [
+        "
+    [
 }
