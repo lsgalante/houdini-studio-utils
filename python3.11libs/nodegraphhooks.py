@@ -30,10 +30,10 @@ def createEventHandler(uievent, pending_actions):
             'H': lambda: editor.translateView('left'),
             'L': lambda: editor.translateView('right'),
             # Move node
-            'Ctrl+K': lambda: editor.translateNodes('up'),
-            'Ctrl+J': lambda: editor.translateNodes('down'),
-            'Ctrl+H': lambda: editor.translateNodes('left'),
-            'Ctrl+L': lambda: editor.translateNodes('right'),
+            'Alt+K': lambda: editor.translateNodes('up'),
+            'Alt+J': lambda: editor.translateNodes('down'),
+            'Alt+H': lambda: editor.translateNodes('left'),
+            'Alt+L': lambda: editor.translateNodes('right'),
             # Organize
             'Ctrl+Shift+A': editor.arrangeNodes,
             # Grid
