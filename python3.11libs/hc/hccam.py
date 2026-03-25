@@ -1,19 +1,17 @@
 import hou
-from .geo import Geo
-from .sceneviewer import SceneViewer
+from .hcgeo import HCGeo
+from .hcsceneviewer import HCSceneViewer
 
 """
 Accepts 1 camera node object and 1 scene viewer object as arguments.
 """
 
-
-class Cam:
-    def __init__(self, node, hou_scene_viewer):
-        self.node             = node
-        self.hou_scene_viewer = hou_scene_viewer
-        self.scene_viewer     = SceneViewer(hou_scene_viewer)
-
-        self.node      = node
+class HCCam:
+    def __init__(self, node, scene_viewer):
+        self.node = node
+        self.scene_viewer = scene_viewer
+        self.hc_scene_viewer = HCSceneViewer(scene_viewer)
+        self.node = node
         self._t            = hou.Vector3(0, 0, 0)
         self._r            = hou.Vector3(0, 0, 0)
         self._p            = hou.Vector3(0, 0, 0)
@@ -41,7 +39,7 @@ class Cam:
     """ Movement """
 
     def center(self):
-        centroid = self.scene_viewer.geo().centroid()
+        centroid = self.hc_scene_viewer.geo().centroid()
         self.t = hou.Vector3(centroid)
         self.p = hou.Vector3(centroid)
 
@@ -219,12 +217,12 @@ class Cam:
         self.aspect_ratio = ratio
 
     def geo(self):
-        return self.scene_viewer.geo()
+        return self.hc_scene_viewer.geo()
 
     def lock(self):
-        viewport = self.viewport()
-        viewport.setCamera(self.node)
-        viewport.lockCameraToView(1)
+        hc_viewport = self.hc_viewport()
+        hc_viewport.setCamera(self.node)
+        hc_viewport.lockCameraToView(1)
 
     def reset(self):
         self.t          = hou.Vector3(0, 0, 2)
@@ -264,5 +262,5 @@ class Cam:
         self.viewport().lockCameraToView(0)
 
     def viewport(self):
-        return self.scene_viewer.allViewports()[3]
+        return self.hc_scene_viewer.allViewports()[3]
 

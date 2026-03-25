@@ -1,79 +1,81 @@
 import hou
-from .networkeditor import NetworkEditor
-from .sceneviewer import SceneViewer
-from .pane import Pane
-from .pathtab import PathTab
-from .tab import Tab
+from .hcbindings import HCBindings
+from .hcnetworkeditor import HCNetworkEditor
+from .hcsceneviewer import HCSceneViewer
+from .hcpane import HCPane
+from .hcpathtab import HCPathTab
+from .hctab import HCTab
 
 
 class Session:
     def __init__(self):
         return
 
-
     """ Context """
 
     def currentNode(self):
-        return self.currentTab().currentNode()
+        return self.currentHCTab().currentNode()
 
     def projectPath(self):
         return hou.hipFile.path()
 
 
-    """ Layout """
-    """ 'allTabs' and 'currentTab' methods intentionally do not use the hou.ui.paneTabUnderCursor method """
+    """
+    Layout
+    'allTabs' and 'currentTab' do not use hou.ui.paneTabUnderCursor method
+    """
 
-    def allNetworkEditors(self):
-        editors = []
-        for tab in self.allTabs():
-            if tab.type() == "NetworkEditor":
-                editors.append(tab)
-        return editors
+    def allHCNetworkEditors(self):
+        hc_network_editors = []
+        for hc_tab in self.allHCTabs():
+            if hc_tab.type() == "NetworkEditor":
+                hc_network_editors.append(tab)
+        return hc_network_editors
 
-    def allPanes(self):
-        panes = []
-        for hou_pane in self.desktop().panes():
-            panes.append(Pane(hou_pane))
+    def allHCPanes(self):
+        hc_panes = []
+        for pane in self.desktop().panes():
+            hc_panes.append(HCPane(pane))
         return panes
 
-    def allSceneViewers(self):
-        viewers = []
-        for tab in self.tabs():
+    def allHCSceneViewers(self):
+        hc_scene_viewers = []
+        for tab in self.allTabs():
             if tab.type() == "SceneViewer":
                 viewers.append(SceneViewer(tab))
         return viewers
 
-    def allTabs(self):
+    def allHCTabs(self):
         tabs = []
         for pane in self.allPanes():
             for tab in pane.allTabs():
                 tabs.append(tab)
         return tabs
 
-    def allViewports(self):
-        viewports = []
-        viewers = self.sceneViewers
-        for viewer in viewers:
-            for viewport in viewer.viewports():
-                viewports.append(viewport)
-        return viewports
+    def allHCViewports(self):
+        hc_viewports = []
+        hc_scene_viewers = self.allHCSceneViewers
+        for hc_scene_viewer in hc_scene_viewers:
+            for hc_viewport in hc_scene_viewer.allHCCiewports():
+                hc_viewports.append(hc_viewport)
+        return hc_viewports
 
     def clearLayout(self):
-        tabs = self.tabs()
+        tabs = self.allTabs()
         for tab in tabs:
             if tab != tabs[0]:
                 tab.close()
 
-    def currentPane(self):
-        return Pane(hou.ui.paneUnderCursor())
+    def currentHCPane(self):
+        return HCPane(hou.ui.paneUnderCursor())
 
-    def currentTab(self):
-        return self.currentPane().currentTab()
+    def currentHCTab(self):
+        return self.currentHCPane().currentHCTab()
 
     def desktop(self):
         return hou.ui.curDesktop()
 
-    def printLayout(self):
+    def printHCLayout(self):
         panes = hou.ui.panes()
         root = panes[0].getSplitParent()
         lefts = []
@@ -96,13 +98,13 @@ class Session:
             tab.setName('panetab' + str(i))
             i += 1
 
-    def root(self):
+    def layoutRoot(self):
         root = hou.ui.panes()[0].getSplitParent().getSplitParent()
 
 
     """ Settings """
 
-    def autosave(self):
+    def isAutoSave(self):
         return hou.getPreference('autoSave')
 
     def openPreferences(self):
@@ -112,12 +114,11 @@ class Session:
         hou.ui.reloadColorScheme()
         hou.ui.reloadViewportColorSchemes()
 
-    def reloadStudioUtils(self):
+    def reloadHC(self):
         hou.ui.reloadPackage(hou.homeHoudiniDirectory() + '/packages/houdini-studio-utils.json')
 
     def reloadHotkeys(self):
-        from .bindings import Bindings
-        Bindings().load()
+        HCBindings().load()
 
     def reloadKeycam(self):
         hou.ui.reloadViewerState('keycam')

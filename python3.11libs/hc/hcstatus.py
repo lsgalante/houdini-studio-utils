@@ -4,11 +4,11 @@ from PySide6.QtWidgets import QLabel, QVBoxLayout
 from PySide6.QtCore import Qt
 
 
-class Status(QtWidgets.QDialog):
+class HCStatus(QtWidgets.QDialog):
     def __init__(self):
         super(Dialog, self).__init__(hou.qt.mainWindow())
         self.resize(500, 200)
-        self.setWindowTitle("Status")
+        self.setWindowTitle("HC Status")
         self.setWindowFlags(Qt.Tool | Qt.WindowStaysOnTopHint)
 
         # Widgets

@@ -1,40 +1,40 @@
-from .session import Session
+from .hcsession import HCSession
 
 def setLayoutQuad(self):
-    session = Session()
-    session.clearLayout()
-    session.allTabs()[0].setType("PythonShell")
-    session.allPanes()[0].splitHorizontal()
-    session.allPanes()[0].splitVertical()
-    session.allPanes()[1].splitVertical()
+    hc_session = HCSession()
+    hc_session.clearLayout()
+    hc_session.allTabs()[0].setType("PythonShell")
+    hc_session.allPanes()[0].splitHorizontal()
+    hc_session.allPanes()[0].splitVertical()
+    hc_session.allPanes()[1].splitVertical()
 
 def setLayoutRamp(self):
-    session = Session()
-    session.removeEventLoopCallbacks()
-    session.clearLayout()
-    session.allPanes()[0].splitVertical()
-    session.allTabs()[1].setType("Parm")
-    session.allPanes()[1].setSplitRatio(0.3)
-    session.allPanes()[1].createTab()
+    hc_session = HCSession()
+    hc_session.removeEventLoopCallbacks()
+    hc_session.clearLayout()
+    hc_session.allPanes()[0].splitVertical()
+    hc_session.allTabs()[1].setType("Parm")
+    hc_session.allPanes()[1].setSplitRatio(0.3)
+    hc_session.allPanes()[1].createTab()
 
 def setLayoutTriH(self):
-    session = Session()
-    session.removeEventLoopCallbacks()
-    session.clearLayout()
+    hc_session = HCSession()
+    hc_session.removeEventLoopCallbacks()
+    hc_session.clearLayout()
     # Make panes
-    session.allTabs()[0].setType("PythonShell")
-    session.allPanes()[0].splitHorizontal()
-    session.allPanes()[1].splitHorizontal()
+    hc_session.allTabs()[0].setType("PythonShell")
+    hc_session.allPanes()[0].splitHorizontal()
+    hc_session.allPanes()[1].splitHorizontal()
     # Make tabs
-    session.allPanes()[1].createTab("PythonShell")
-    session.allPanes()[1].allTabs()[0].setIsCurrentTab()
+    hc_session.allPanes()[1].createTab("PythonShell")
+    hc_session.allPanes()[1].allTabs()[0].setIsCurrentTab()
     # Set types
-    session.allPanes()[0].allTabs()[0].setType("SceneViewer")
-    session.allPanes()[1].allTabs()[0].setType("Parm")
-    session.allPanes()[1].allTabs()[1].setType("DetailsView")
-    session.allPanes()[2].allTabs()[0].setType("NetworkEditor")
+    hc_session.allPanes()[0].allTabs()[0].setType("SceneViewer")
+    hc_session.allPanes()[1].allTabs()[0].setType("Parm")
+    hc_session.allPanes()[1].allTabs()[1].setType("DetailsView")
+    hc_session.allPanes()[2].allTabs()[0].setType("NetworkEditor")
     # Ratios
-    session.allPanes()[0].setSplitFraction(0.5)
+    hc_session.allPanes()[0].setSplitFraction(0.5)
     hou.session.last_pane = self.pane()
     hou.ui.addEventLoopCallback(triHCallback)
 

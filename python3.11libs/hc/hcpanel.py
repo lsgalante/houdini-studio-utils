@@ -2,9 +2,9 @@ import hou, inspect
 from PySide6        import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 from fuzzyfinder    import fuzzyfinder
-from .session       import Session
-from .pane          import Pane
-from .tab           import Tab
+from .hcsession     import HCSession
+from .hcpane        import HCPane
+from .hctab         import HCTab
 from importlib      import reload
 
 
@@ -23,7 +23,7 @@ class Panel(QtWidgets.QDialog):
         self.pane = self.tab.pane()
         self.map = {}
         type = self.tab.type()
-        print("\n###\nPanel Context: " + str(type) + "\n###")
+        print("HC Panel - Context: " + str(type))
         if type == "Tab":
             self.map = self.baseMap()
         elif type == "PathTab":
@@ -160,15 +160,16 @@ class Panel(QtWidgets.QDialog):
 
     def networkEditorMap(self):
         return {
-            "Arrange Nodes":     self.tab.arrangeNodes,
-            "Deselect All":      self.tab.pwd().deselectAll,
-            "Frame All":         self.tab.frameAll,
-            "Rename Node":       self.tab.renameNode,
-            "Set Node Colors":   self.tab.setNodeColors,
-            "Set Node Shapes":   self.tab.setNodeShapes,
-            "Show Path Message": self.tab.showPathMessage,
-            "Toggle Grid Mode":  self.tab.toggleGridMode,
-            "Toggle Menu":       self.tab.toggleMenu
+            "Arrange Nodes":      self.tab.arrangeNodes,
+            "Deselect All":       self.tab.pwd().deselectAll,
+            "Frame All":          self.tab.frameAll,
+            "Reload Node Shapes": self.tab.reloadNodeShapes,
+            "Rename Node":        self.tab.renameNode,
+            "Set Node Colors":    self.tab.setNodeColors,
+            "Set Node Shapes":    self.tab.setNodeShapes,
+            "Show Path Message":  self.tab.showPathMessage,
+            "Toggle Grid Mode":   self.tab.toggleGridMode,
+            "Toggle Menu":        self.tab.toggleMenu
             # "Show Radial Menu":  self.tab.showRadialMenu,
         }
 

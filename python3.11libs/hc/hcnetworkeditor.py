@@ -125,6 +125,9 @@ class NetworkEditor(PathTab):
     def type(self):
         return "NetworkEditor"
 
+    def reloadNodeShapes(self):
+        self.hou_tab.reloadNodeShapes()
+
     def renameNode(self):
         node = self.currentNode()
         name = hou.ui.readInput("Rename_node", buttons=("Yes", "No"))

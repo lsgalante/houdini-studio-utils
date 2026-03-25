@@ -1,12 +1,12 @@
 import hou
 
-class Guides:
+class HCGuides:
     def __init__(self, state):
-        self.state            = state
-        self.cam_node         = state.cam_node
-        self.cam              = state.cam
-        self.hou_scene_viewer = state.hou_scene_viewer
-        self.scene_viewer     = state.scene_viewer
+        self.state = state
+        self.cam_node = state.cam_node
+        self.cam = state.cam
+        self.scene_viewer = hou_scene_viewer
+        self.hc_scene_viewer = hc_state.scene_viewer
 
         self.options = {
             'axis_size': 1,
@@ -14,23 +14,23 @@ class Guides:
         }
 
         self.states = {
-            'cam_axis':   0,
+            'cam_axis': 0,
             'pivot_axis': 1,
-            'bbox':       0,
-            'perim':      0,
-            'pivot_2d':   0,
-            'pivot_3d':   0,
-            'ray':        0
+            'bbox': 0,
+            'perim': 0,
+            'pivot_2d': 0,
+            'pivot_3d': 0,
+            'ray': 0
         }
 
         self.cam_axis = hou.GeometryDrawable(
-            scene_viewer=self.hou_scene_viewer,
+            scene_viewer=self.scene_viewer,
             geo_type=hou.drawableGeometryType.Line,
             name='cam_axis'
         )
 
         self.pivot_axis = hou.GeometryDrawable(
-            scene_viewer=self.hou_scene_viewer,
+            scene_viewer=self.scene_viewer,
             geo_type=hou.drawableGeometryType.Line,
             name='pivot_axis',
             params={
@@ -39,7 +39,7 @@ class Guides:
         )
 
         self.bbox = hou.GeometryDrawable(
-            scene_viewer=self.hou_scene_viewer,
+            scene_viewer=self.scene_viewer,
             geo_type=hou.drawableGeometryType.Line,
             name='bbox',
             params={
@@ -49,19 +49,19 @@ class Guides:
         )
 
         self.perim = hou.GeometryDrawable(
-            scene_viewer=self.hou_scene_viewer,
+            scene_viewer=self.scene_viewer,
             geo_type=hou.drawableGeometryType.Line,
             name='perim'
         )
 
         self.pivot_2d = hou.GeometryDrawable(
-            scene_viewer=self.hou_scene_viewer,
+            scene_viewer=self.scene_viewer,
             geo_type=hou.drawableGeometryType.Line,
             name='pivot_2d'
         )
 
         self.pivot_3d = hou.GeometryDrawable(
-            scene_viewer=self.hou_scene_viewer,
+            scene_viewer=self.scene_viewer,
             geo_type=hou.drawableGeometryType.Face,
             name='pivot_3d',
             params={
@@ -71,7 +71,7 @@ class Guides:
         )
 
         self.ray = hou.GeometryDrawable(
-            scene_viewer=self.hou_scene_viewer,
+            scene_viewer=self.scene_viewer,
             geo_type=hou.drawableGeometryType.Line,
             name='ray',
             params={
@@ -120,14 +120,14 @@ class Guides:
 
     def makeCamAxis(self):
         axes = (
-            self.cam.local_x,
-            self.cam.local_y,
-            self.cam.local_z
+            self.hc_cam.local_x,
+            self.hc_cam.local_y,
+            self.hc_cam.local_z
         )
         geo = hou.Geometry()
         for i in range(3):
-            P0 = self.cam.t + axes[i]
-            P1 = self.cam.t + axes[i] * -1
+            P0 = self.hc_cam.t + axes[i]
+            P1 = self.hc_cam.t + axes[i] * -1
             pts = geo.createPoints((P0, P1))
             poly = geo.createPolygon(is_closed=False)
             poly.addVertex(pts[0])
@@ -135,7 +135,6 @@ class Guides:
         self.cam_axis.setGeometry(geo)
 
     def makePivotAxis(self):
-        print('test')
         axes = (
             self.cam.local_x,
             self.cam.local_y,
@@ -152,8 +151,8 @@ class Guides:
         geo = hou.Geometry()
         geo.addAttrib(hou.attribType.Point, 'Cd', (0.1, 0.1, 0.1))
         for i in range(3):
-            P0 = self.cam.p + axes[i]
-            P1 = self.cam.p + axes[i] * -1
+            P0 = self.hc_cam.p + axes[i]
+            P1 = self.hc_cam.p + axes[i] * -1
             pts = geo.createPoints((P0, P1))
             pts[0].setAttribValue('Cd', colors[i])
             pts[1].setAttribValue('Cd', colors[i])
@@ -167,7 +166,7 @@ class Guides:
 
     def makeBbox(self):
         guide_geo = hou.Geometry()
-        target_geo = self.scene_viewer.geo()
+        target_geo = self.hc_scene_viewer.geo()
         bbox = target_geo.bbox()
         box = hou.sopNodeTypeCategory().nodeVerb('box')
         box.setParms(
@@ -186,8 +185,8 @@ class Guides:
             {
                 'divs': 128,
                 'type': 1,
-                't':    self.cam.p,
-                'scale': self.cam.p.distanceTo(self.cam.t),
+                't':    self.hc_cam.p,
+                'scale': self.hc_cam.p.distanceTo(self.cam.t),
                 'orient': 2
             }
         )
@@ -229,7 +228,7 @@ class Guides:
                 'freq':  7,
                 'scale': scale,
                 'type':  1,
-                't':     self.cam.p
+                't':     self.hc_cam.p
             }
         )
         sphere.execute(guide_geo, [])
@@ -238,7 +237,7 @@ class Guides:
     def makeRay(self):
         guide_geo = hou.Geometry()
         guide_geo.addAttrib(hou.attribType.Point, 'Cd', (1, 0, 0))
-        pts = guide_geo.createPoints((self.cam.p, self.cam.t))
+        pts = guide_geo.createPoints((self.hc_cam.p, self.hc_cam.t))
         poly = guide_geo.createPolygon()
         poly.addVertex(pts[0])
         poly.addVertex(pts[1])

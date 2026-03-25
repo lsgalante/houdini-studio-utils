@@ -23,27 +23,27 @@ class Radial:
         createItem(
             pos=0,
             label="UI",
-            submenu=True, script="from hc import Radial; Radial.sceneViewerUI()"
+            submenu=True, script="from hc import HCRadial; HCRadial.sceneViewerUI()"
         )
         createItem(
             pos=7,
             label="Operation bar",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).toggleOperationBar()"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).toggleOperationBar()"
         )
         createItem(
             pos=6,
             label="Display bar",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).toggleDisplayOptionsToolbar()"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).toggleDisplayOptionsToolbar()"
         )
         createItem(
             pos=5,
             label="Selection bar",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).toggleSelectionBar()"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).toggleSelectionBar()"
         )
         createItem(
             pos=4,
             label="Keycam",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).keycam()"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).keycam()"
         )
         return menu
 
@@ -52,42 +52,42 @@ class Radial:
         createItem(
             pos=0,
             label="DoubleSide",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).setLayout('DoubleSide')"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).setLayout('DoubleSide')"
         )
         createItem(
             pos=1,
             label="DoubleStack",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).setLayout('DoubleStack')"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).setLayout('DoubleStack')"
         )
         createItem(
             pos=2,
             label="Quad",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).setLayout('Quad')"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).setLayout('Quad')"
         )
         createItem(
             pos=3,
             label="QuadBottomSplit",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).setLayout('QuadBottomSplit')"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).setLayout('QuadBottomSplit')"
         )
         createItem(
             pos=4,
             label="QuadLeftSplit",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).setLayout('QuadLeftSplit')"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).setLayout('QuadLeftSplit')"
         )
         createItem(
             pos=5,
             label="Single",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).setLayout('Single')"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).setLayout('Single')"
         )
         createItem(
             pos=6,
             label="TripleBottomSplit",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).setLayout('TripleBottomSplit')"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).setLayout('TripleBottomSplit')"
         )
         createItem(
             pos=7,
             label="TripleLeftSplit",
-            script="from hc import SceneViewer; SceneViewer(kwargs['pane']).setLayout('TripleLeftSplit')"
+            script="from hc import HCSceneViewer; HCSceneViewer(kwargs['pane']).setLayout('TripleLeftSplit')"
         )
         return menu
 
@@ -96,37 +96,37 @@ class Radial:
         createItem(
             pos=0,
             label="Tabs",
-            script="from hc import Tab; Tab(kwargs['pane']).pane().toggleTabs()"
+            script="from hc import HCTab; HCTab(kwargs['pane']).pane().toggleTabs()"
         )
         createItem(
             pos=7,
             label="Path",
-            script="from hc import Tab; Tab(kwargs['pane']).toggleNetworkControls()"
+            script="from hc import HCTab; HCTab(kwargs['pane']).toggleNetworkControls()"
         )
         createItem(
             pos=6,
             label="Maximize",
-            script="from hc import Tab; Tab(kwargs['pane']).pane().toggleMaximize()"
+            script="from hc import HCTab; HCTab(kwargs['pane']).pane().toggleMaximize()"
         )
         createItem(
             pos=5,
             label="Stowbars",
-            script="from hc import Session; Session().toggleStowbars()"
+            script="from hc import HCSession; HCSession().toggleStowbars()"
         )
         createItem(
             pos=4,
             label="All tabs",
-            script="from hc import Session; Session().toggleTabs()"
+            script="from hc import HCSession; HCSession().toggleTabs()"
         )
         createItem(
             pos=3,
             label="All paths",
-            script="from hc import Session; Session().toggleNetworkControls()"
+            script="from hc import HCSession; HCSession().toggleNetworkControls()"
         )
         createItem(
             pos=2,
             label="Layout",
-            submenu=True, script="from hc import radialutils; radialutils.viewerRadialLayout()"
+            submenu=True, script="from hc import HCRadial; HCRadial.viewerRadialLayout()"
         )
         return menu
 
@@ -137,17 +137,17 @@ class Radial:
             pos=0,
             submenu=True,
             label="UI",
-            script="from hc import Radial; Radial.networkEditorUI()"
+            script="from hc import HCRadial; HCRadial.networkEditorUI()"
         )
         createItem(
             pos=7,
             label="Menu",
-            script="from hc import NetworkEditor; NetworkEditor(kwargs['pane']).toggleMenu()"
+            script="from hc import HCNetworkEditor; HCNetworkEditor(kwargs['pane']).toggleMenu()"
         )
         createItem(
             pos=6,
             label="Frame all",
-            script="from hc import NetworkEditor; NetworkEditor(kwargs['pane']).frameAll()"
+            script="from hc import HCNetworkEditor; HCNetworkEditor(kwargs['pane']).frameAll()"
         )
         return menu
 
@@ -156,31 +156,31 @@ class Radial:
         createItem(
             pos=0,
             label="Tabs",
-            script="from hc import Tab; Tab(kwargs['pane']).pane().toggleTabs()"
+            script="from hc import HCTab; HCTab(kwargs['pane']).pane().toggleTabs()"
         )
         createItem(
             pos=7,
             label="Path",
-            script="from hc import Tab; Tab(kwargs['pane']).toggleNetworkControls()"
+            script="from hc import HCTab; HCTab(kwargs['pane']).toggleNetworkControls()"
         )
         createItem(
             pos=6,
             label="All tabs",
-            script="from hc import Session; Session().toggleTabs()"
+            script="from hc import HCSession; HCSession().toggleTabs()"
         )
         createItem(
             pos=5,
             label="All paths",
-            script="from hc import Session; Session().toggleNetworkControls()"
+            script="from hc import HCSession; HCSession().toggleNetworkControls()"
         )
         createItem(
             pos=4,
             label="Stowbars",
-            script="from hc import Session; Session().toggleStowbars()"
+            script="from hc import HCSession; HCSession().toggleStowbars()"
         )
         createItem(
             pos=3,
             label="Maximize",
-            script="from hc import Tab; Tab(kwargs['pane']).pane().toggleMaximize()"
+            script="from hc import HCTab; HCTab(kwargs['pane']).pane().toggleMaximize()"
         )
         return menu

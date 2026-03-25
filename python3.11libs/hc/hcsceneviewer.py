@@ -1,5 +1,6 @@
 import hou, types
-from .pathtab import PathTab
+from .hcpathtab import HCPathTab
+from .hcviewport import HCViewport
 
 """
 Layout/viewport IDs
@@ -35,27 +36,26 @@ setViewportLayout(layout, single=-1)
 3: bottom-right quad viewport (default: Right)
 """
 
-class SceneViewer(PathTab):
-    def __init__(self, hou_tab):
-        self.hou_tab = hou_tab
-
+class HCSceneViewer(HCPathTab):
+    def __init__(self, tab):
+        self.tab = tab
 
     """ Geometry """
 
-    def displaySets(self):
+    def allDisplaySets(self):
         displaySets = []
-        for viewport in self.viewports():
-            settings = viewport.settings()
+        for hc_viewport in self.allHCViewports():
+            settings = hc_viewport.settings()
             displaySet = settings.displaySet(hou.displaySetType.DisplayModel)
             displaySets.append(displaySet)
-        return(displaySets)
+        return displaySets
 
     def toggleLightGeo(self):
         self.setShowLights(not self.showLights())
 
     def toggleBackface(self):
         visible = 0
-        displaySets = self.displaySets()
+        displaySets = self.allDisplaySets()
         for displaySet in displaySets:
             if displaySet.isShowingPrimBackfaces():
                 visible = 1
@@ -64,7 +64,7 @@ class SceneViewer(PathTab):
 
     def togglePointMarkers(self):
         visible = 0
-        displaySets = self.displaySets()
+        displaySets = self.allDisplaySets()
         for displaySet in displaySets:
             if displaySet.isShowingPointMarkers():
                 visible = 1
@@ -73,7 +73,7 @@ class SceneViewer(PathTab):
 
     def togglePointNormals(self):
         visible = 0
-        displaySets = self.displaySets()
+        displaySets = self.allDisplaySets()
         for displaySet in displaySets:
             if displaySet.isShowingPointNormals():
                 visible = 1
@@ -82,7 +82,7 @@ class SceneViewer(PathTab):
 
     def togglePointNumbers(self):
         visible = 0
-        displaySets = self.displaySets()
+        displaySets = self.allDisplaySets()
         for displaySet in displaySets:
             if displaySet.isShowingPointNumbers():
                 visible = 1
@@ -91,7 +91,7 @@ class SceneViewer(PathTab):
 
     def togglePrimNormals(self):
         visible = 0
-        displaySets = self.displaySets()
+        displaySets = self.allDisplaySets()
         for displaySet in displaySets:
             if displaySet.isShowingPrimNormals():
                 visible = 1
@@ -100,7 +100,7 @@ class SceneViewer(PathTab):
 
     def togglePrimNumbers(self):
         visible = 0
-        displaySets = self.displaySets()
+        displaySets = self.allDisplaySets()
         for displaySet in displaySets:
             if displaySet.isShowingPrimNumbers():
                 visible = 1
@@ -108,7 +108,7 @@ class SceneViewer(PathTab):
             displaySet.showPrimNumbers(not visible)
 
     def toggleVectors(self):
-        for viewport in self.viewports():
+        for hc_viewport in self.allHCViewports():
             settings = viewport.settings()
             scale = settings.vectorScale()
             if scale == 1:
@@ -118,21 +118,20 @@ class SceneViewer(PathTab):
             else:
                 settings.setVectorScale(1)
 
-
     """ Grids """
 
     def referencePlane(self):
-        return self.hou_tab.referencePlane()
+        return self.tab.referencePlane()
 
     def toggleGrid(self):
-        refplane = self.referencePlane()
-        refplane.setIsVisible(not refplane.isVisible())
+        reference_plane = self.referencePlane()
+        reference_plane.setIsVisible(not reference_plane.isVisible())
 
 
     """ Layout """
 
     def layout(self):
-        return self.hou_tab.viewportLayout()
+        return self.tab.viewportLayout()
 
     def layouts(self):
         return (
@@ -177,34 +176,34 @@ class SceneViewer(PathTab):
             "TripleBottomSplit": hou.geometryViewportLayout.TripleBottomSplit,
             "TripleLeftSplit":   hou.geometryViewportLayout.TripleLeftSplit
         }
-        self.hou_tab.setViewportLayout(layout_map[layout])
+        self.tab.setViewportLayout(layout_map[layout])
 
 
     """ UI """
 
     def isVisibleDisplayBar(self):
-        return self.hou_tab.isShowingDisplayOptionsBar()
+        return self.tab.isShowingDisplayOptionsBar()
 
     def isVisibleGroupList(self):
-        return self.hou_tab.isGroupListVisible()
+        return self.tab.isGroupListVisible()
 
     def isVisibleOperationBar(self):
-        return self.hou_tab.isShowingOperationBar()
+        return self.tab.isShowingOperationBar()
 
     def isVisibleSelectionBar(self):
-        return self.hou_tab.isShowingSelectionBar()
+        return self.tab.isShowingSelectionBar()
 
     def showDisplayBar(self, value):
-        self.hou_tab.showDisplayOptionsBar(value)
+        self.tab.showDisplayOptionsBar(value)
 
     def showGroupList(self, value):
-        self.hou_tab.setGroupListVisible(value)
+        self.tab.setGroupListVisible(value)
 
     def showOperationBar(self, value):
-        self.hou_tab.showOperationBar(value)
+        self.tab.showOperationBar(value)
 
     def showSelectionBar(self, value):
-        self.hou_tab.showSelectionBar(value)
+        self.tab.showSelectionBar(value)
 
     def toggleDisplayBar(self):
         self.showDisplayBar(not self.isVisibleDisplayBar())
@@ -219,7 +218,7 @@ class SceneViewer(PathTab):
         self.showSelectionBar(not self.isVisibleSelectionBar())
 
     def toggleBars(self):
-        state = self.hou_tab.isShowingOperationBar() + self.hou_tab.isShowingDisplayOptionsBar() + self.hou_tab.isShowingSelectionBar()
+        state = self.tab.isShowingOperationBar() + self.tab.isShowingDisplayOptionsBar() + self.tab.isShowingSelectionBar()
         if state > 0:
             self.showOperationBar(0)
             self.showDisplayBar(0)
@@ -229,11 +228,10 @@ class SceneViewer(PathTab):
             self.showDisplayBar(1)
             self.showSelectionBar(1)
 
-
     """ Utils """
 
     def type(self):
-        return "SceneViewer"
+        return "HCSceneViewer"
 
     def keycam(self):
         """
@@ -241,13 +239,13 @@ class SceneViewer(PathTab):
         Chop, ChopNet, Cop, Cop2, CopNet, Data, Director, Dop, Driver, Lop, Manager, Object, Shop, Sop, Top, TopNet, Vop, VopNet
         """
         context_map = {
-            "Object": "Entered keycam in an obj context",
-            "Sop": "Entered keycam in a sop context",
-            "Lop": "Entered keycam in a lop context",
+            "Object": "Keycam obj context",
+            "Sop": "Keycam sop context",
+            "Lop": "Keycam lop context",
         }
         context = self.pwd().childCat()
         if context in context_map:
-            self.hou_tab.setCurrentState('keycam')
+            self.tab.setCurrentState('keycam')
             hou.ui.setStatusMessage(context_map[context])
         else:
             hou.ui.setStatusMessage("No obj, sop or lop context", hou.severityType.Error)
@@ -256,18 +254,21 @@ class SceneViewer(PathTab):
     """ Viewports """
 
     def homeAllViewports(self):
-        for viewport in self.viewports():
-            viewport.home()
+        for hc_viewport in self.allHCViewports():
+            hc_viewport.home()
 
-    def currentViewport(self):
-        return self.hou_tab.curViewport()
+    def currentHCViewport(self):
+        return self.tab.curViewport()
 
-    def allViewports(self):
-        return self.hou_tab.viewports()
+    def allHCViewports(self):
+        hc_viewports = []
+        for viewport in self.tab.viewports():
+            hc_viewports.append(HCViewport(viewport))
+        return hc_viewports()
 
-    def frame(self):
-        for viewport in self.allViewports():
-            cam = viewport.camera()
+    def frameAllViewports(self):
+        for hc_viewport in self.allHCViewports():
+            cam = hc_viewport.camera()
             # Is camera node or default
             if not cam:
                 viewport.frameAll()

@@ -3,16 +3,16 @@ from fuzzyfinder import fuzzyfinder
 from PySide6 import QtCore
 from PySide6.QtWidgets import QListWidget, QListWidgetItem, QDialog, QLineEdit, QBoxLayout
 from PySide6.QtCore import Qt, QEvent
-from .session import Session
+from .hcsession import HCSession
 
 class Visualizers(QDialog):
     def __init__(self):
         super(VisualizerMenu, self).__init__(hou.qt.mainWindow())
 
         # Resources
-        self.session = Session()
-        self.viewport = self.session.viewport()
-        self.vis_arr = self.viewport.visualizers()
+        self.hc_session = HCSession()
+        self.hc_viewport = self.hc_session.currentViewport()
+        self.vis_arr = self.hc_viewport.visualizers()
 
         # Filter box
         self.filter_box = filterBox()

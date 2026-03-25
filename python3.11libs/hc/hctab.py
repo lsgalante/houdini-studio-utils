@@ -1,28 +1,27 @@
 import hou
 import types
+from .hcpane import HCPane
 
-
-class Tab():
-    def __init__(self, hou_tab):
-        self.hou_tab = hou_tab
+class HCTab():
+    def __init__(self, tab):
+        self.tab = tab
 
     #
     # Tab
     #
 
     def close(self):
-        self.hou_tab.close()
+        self.tab.close()
 
     def closeOtherTabs(self):
-        for tab in self.pane().allTabs():
+        for tab in self.hcPane().allTabs():
             if tab != self.tab:
                 tab.close()
 
-    def pane(self):
-        from .pane import Pane
-        return Pane(self.hou_tab.pane())
+    def hcPane(self):
+        return HCPane(self.tab.pane())
 
-    def type(self):
+    def hcType(self):
         return "Tab"
 
     def setTypeDetailsView(self):
@@ -49,21 +48,21 @@ class Tab():
     #
 
     def hasNetworkControls(self):
-        return self.hou_tab.hasNetworkControls()
+        return self.tab.hasNetworkControls()
 
     def isPin(self):
-        return self.hou_tab.isPin()
-    
+        return self.tab.isPin()
+
     def isShowingNetworkControls(self):
-        value = self.hou_tab.isShowingNetworkControls()
+        value = self.tab.isShowingNetworkControls()
         return value
 
     def setPin(self, value):
-        self.hou_tab.setPin(value)
-    
+        self.tab.setPin(value)
+
     def showNetworkControls(self, value):
-        self.hou_tab.showNetworkControls(value)
-    
+        self.tab.showNetworkControls(value)
+
     def toggleNetworkControls(self):
         if self.hasNetworkControls():
             self.showNetworkControls(not self.isShowingNetworkControls())

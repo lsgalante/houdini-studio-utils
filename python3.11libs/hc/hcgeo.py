@@ -1,11 +1,11 @@
 import hou
 
-class Geo:
-    def __init__(self, hou_geo):
-        self.hou_geo = hou_geo
+class HCGeo:
+    def __init__(self, geo):
+        self.geo = geo
 
     def bbox(self):
-        return self.hou_geo.boundingBox()
+        return self.geo.boundingBox()
 
     def centroid(self):
         geo_out = hou.Geometry()

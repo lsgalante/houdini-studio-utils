@@ -1,8 +1,8 @@
 import hou
 
-class DefaultCam:
-    def __init__(self, hou_defaultcam):
-        self.hou_defaultcam = hou_defaultcam
+class HCDefaultCam:
+    def __init__(self, default_cam):
+        self.default_cam = default_cam
 
     def frame(self):
         for viewport in self.viewports():
